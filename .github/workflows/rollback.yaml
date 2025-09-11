@@ -76,7 +76,7 @@ jobs:
       fail-fast: false
 
     env:
-      IMAGE_NAME: hetzner-bare-metal-bootc
+      IMAGE_NAME: ${{ github.event.repository.name }}
       REGISTRY: ghcr.io/${{ github.repository_owner }}
 
     steps:
