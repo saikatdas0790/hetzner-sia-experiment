@@ -70,21 +70,6 @@ jobs:
         run: |
           ssh -o ConnectTimeout=10 root@${{ matrix.server_ip }} "echo 'Server connection successful'"
 
-      - name: Install bootc on target server (if not present)
-        run: |
-          ssh root@${{ matrix.server_ip }} "
-            if ! command -v bootc &> /dev/null; then
-              echo 'Installing bootc...'
-              dnf install -y bootc || (
-                echo 'Adding bootc repository...'
-                dnf copr enable -y rhcontainerbot/bootc
-                dnf install -y bootc
-              )
-            else
-              echo 'bootc is already installed'
-            fi
-          "
-
       - name: Check current bootc status and determine deployment type
         run: |
           ssh root@${{ matrix.server_ip }} "
@@ -97,8 +82,6 @@ jobs:
           ssh root@${{ matrix.server_ip }} "
             echo '${{ secrets.GITHUB_TOKEN }}' | podman login ghcr.io -u ${{ github.actor }} --password-stdin
           "
-
-      # Removed bootc install flow
 
       - name: Update bootc deployment
         run: |
