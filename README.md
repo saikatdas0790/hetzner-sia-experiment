@@ -5,5 +5,5 @@
 ```bash
 dnf update -y;
 dnf install system-reinstall-bootc -y;
-system-reinstall-bootc ghcr.io/dolr-ai/hetzner-sia-experiment:latest;
+system-reinstall-bootc ghcr.io/saikatdas0790/hetzner-sia-experiment:latest;
 ```
