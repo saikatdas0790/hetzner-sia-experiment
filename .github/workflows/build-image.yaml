@@ -16,7 +16,7 @@ jobs:
     #change ubuntu-latest to runner if using the included gitea configs
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: ${{ github.repository }}
+      IMAGE_NAME: ${{ github.event.repository.name }}
       REGISTRY: ghcr.io/${{ github.repository_owner }}
 
     permissions:
