@@ -8,5 +8,5 @@ ADD usr usr
 RUN dnf install -y mdadm && dnf clean all
 
 #enable desired units
-# RUN chmod +x /usr/local/bin/create-raid.sh
-# RUN systemctl enable create-raid.service
+RUN chmod +x /usr/local/bin/create-raid.sh
+RUN systemctl enable create-raid.service
