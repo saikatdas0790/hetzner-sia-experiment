@@ -93,7 +93,7 @@ jobs:
           ssh root@${{ matrix.server_ip }} "
             echo 'Updating bootc deployment'
             echo 'Switching to image: $TARGET_IMAGE'
-            bootc switch $TARGET_IMAGE
+            bootc switch $TARGET_IMAGE --apply
             echo 'Bootc switch completed successfully'
           "
 
@@ -107,14 +107,6 @@ jobs:
               bootc status --json | jq -r '.status.staged.image.image.image' 2>/dev/null || echo 'None'
             fi
           "
-
-      - name: Reboot server to activate new image
-        run: |
-          echo "Rebooting server to activate new image..."
-          ssh root@${{ matrix.server_ip }} "
-            echo 'Rebooting server to activate new image...'
-            nohup reboot &
-          " || echo "Reboot command sent"
 
       - name: Wait for server to come back online
         run: |
