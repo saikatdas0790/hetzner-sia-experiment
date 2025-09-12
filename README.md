@@ -9,6 +9,10 @@ apt full-upgrade -y;
 # podman
 apt install podman -y;
 
+# Remove prior partition table
+wipefs /dev/sda -a;
+wipefs /dev/sdb -a;
+
 # Install bootc with btrfs
 podman run --rm --privileged --pid=host --network=host \
   -v /var/lib/containers:/var/lib/containers \
@@ -25,5 +29,6 @@ mount /dev/sda3 /mnt/root;
 btrfs device add --force /dev/sdb /mnt/root;
 btrfs balance start --force -dconvert=raid0 -mconvert=raid0 /mnt/root;
 umount /mnt/root;
+reboot;
 
 ```

@@ -14,6 +14,11 @@ RUN unzip /usr/local/bin/walletd_linux_amd64.zip -d /usr/local/bin/ && rm /usr/l
 RUN chmod +x /usr/local/bin/walletd
 RUN ls -al /usr/local/bin/walletd
 
+EXPOSE 9980
+EXPOSE 9981
+EXPOSE 9982
+EXPOSE 9983
+
 #add additional software
 # RUN dnf install -y mdadm && dnf clean all
 
