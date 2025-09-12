@@ -19,7 +19,7 @@ podman run --rm --privileged --pid=host --network=host \
   bootc install to-disk --wipe --filesystem=btrfs \
   --root-ssh-authorized-keys /authorized_keys /dev/sda;
 
-# Create unified RAID1 storage
+# Create unified RAID0 btrfs storage
 mkdir -p /mnt/root;
 mount /dev/sda3 /mnt/root;
 btrfs device add --force /dev/sdb /mnt/root;

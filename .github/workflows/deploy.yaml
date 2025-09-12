@@ -89,11 +89,11 @@ jobs:
 
       - name: Update bootc deployment
         run: |
-          TARGET_IMAGE="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest"
+          TARGET_IMAGE="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}"
           ssh root@${{ matrix.server_ip }} "
             echo 'Updating bootc deployment'
             echo 'Switching to image: $TARGET_IMAGE'
-            bootc switch --retain --transport=registry $TARGET_IMAGE
+            bootc switch $TARGET_IMAGE
             echo 'Bootc switch completed successfully'
           "
 
