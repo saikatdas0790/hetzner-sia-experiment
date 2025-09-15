@@ -20,10 +20,10 @@ EXPOSE 9982
 EXPOSE 9983
 
 # Install cockpit and enable the socket
-# RUN dnf install -y cockpit && dnf clean all
-# RUN systemctl enable cockpit.socket
+RUN dnf install -y cockpit && dnf clean all
+RUN systemctl enable cockpit.socket
 
-RUN dnf install -y cockpit cockpit-podman cockpit-storaged cockpit-ws git lm_sensors sysstat tuned bash-completion && dnf clean all
+# RUN dnf install -y cockpit cockpit-podman cockpit-storaged cockpit-ws git lm_sensors sysstat tuned bash-completion && dnf clean all
 
 #enable desired units
-RUN systemctl enable lm_sensors sysstat tuned fstrim.timer podman.socket podman-auto-update.timer cockpit.socket
+# RUN systemctl enable lm_sensors sysstat tuned fstrim.timer podman.socket podman-auto-update.timer cockpit.socket
