@@ -19,9 +19,6 @@ EXPOSE 9981
 EXPOSE 9982
 EXPOSE 9983
 
-#add additional software
-# RUN dnf install -y mdadm && dnf clean all
-
-#enable desired units
-# RUN chmod +x /usr/local/bin/create-raid.sh
-# RUN systemctl enable create-raid.service
+# Install cockpit and enable the socket
+RUN dnf install -y cockpit && dnf clean all
+RUN systemctl enable --now cockpit.socket
