@@ -21,4 +21,4 @@ EXPOSE 9983
 
 # Install cockpit and enable the socket
 RUN dnf install -y cockpit && dnf clean all
-RUN systemctl enable --now cockpit.socket
+RUN systemctl enable cockpit.socket
