@@ -89,7 +89,7 @@ jobs:
 
       - name: Update bootc deployment
         run: |
-          TARGET_IMAGE="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}"
+          TARGET_IMAGE="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest"
           ssh root@${{ matrix.server_ip }} "
             echo 'Updating bootc deployment'
             echo 'Switching to image: $TARGET_IMAGE'
