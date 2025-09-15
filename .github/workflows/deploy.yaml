@@ -89,7 +89,7 @@ jobs:
 
       - name: Update bootc deployment
         run: |
-          TARGET_IMAGE="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest"
+          TARGET_IMAGE="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.event.workflow_run.head_sha }}"
           ssh root@${{ matrix.server_ip }} "
             echo 'Updating bootc deployment'
             echo 'Switching to image: $TARGET_IMAGE'
@@ -141,6 +141,6 @@ jobs:
         run: |
           echo "## Deployment Summary for ${{ matrix.server_ip }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Target Server**: ${{ matrix.server_ip }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Image**: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest" >> $GITHUB_STEP_SUMMARY
+          echo "- **Image**: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.event.workflow_run.head_sha }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Status**: Deployed and activated (server rebooted)" >> $GITHUB_STEP_SUMMARY
           echo "- **Verification**: New image is now active" >> $GITHUB_STEP_SUMMARY
